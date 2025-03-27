@@ -1,0 +1,31 @@
+The Shortest Job First (SJF) Scheduling Algorithm works as follows:
+
+Input:
+
+The number of processes and their respective burst times (the time each process needs to execute).
+Sorting:
+
+The processes are sorted in increasing order of their burst time, so that the shortest job (process) is executed first.
+Execution:
+
+The processes are executed in order of their burst time, starting from the shortest.
+After each process completes, the next shortest job is selected for execution.
+Calculations:
+
+Waiting Time: The time a process spends waiting in the ready queue before it starts executing. It is calculated as the sum of burst times of all the previous processes.
+Turnaround Time: The total time a process takes to complete, from arrival to completion. It is the sum of the waiting time and the burst time of the process.
+Output:
+
+The program displays the burst time, waiting time, and turnaround time for each process, along with the average waiting time and average turnaround time for all processes.
+
+
+
+
+
+Shortest Job First (SJF) is a CPU scheduling algorithm that selects the process with the shortest burst time (or execution time) for execution first. It is a non-preemptive scheduling algorithm, meaning once a process starts executing, it is not interrupted until it finishes. The goal of SJF is to minimize the average waiting time by prioritizing shorter tasks.
+
+Key Points:
+Non-Preemptive: Once a process starts executing, it will run to completion without being interrupted.
+Shortest Burst Time First: The process with the shortest burst time (CPU time) is selected first for execution.
+Optimal for Minimizing Average Waiting Time: SJF is known to minimize the average waiting time when compared to other scheduling algorithms like FCFS (First-Come-First-Served).
+Starvation: One downside of SJF is the possibility of starvation, where longer processes may never get executed if shorter processes keep arriving.

@@ -1,0 +1,77 @@
+https://chatgpt.com/share/67377e43-1e80-800c-9cb5-2bf8472adb31
+
+
+
+
+Step-by-Step Algorithm
+Initialize Files:
+
+Open the input file macro_input.asm.
+Create and initialize output files: mnt.txt, mdt.txt, kpdt.txt, pntab.txt, and intermediate.txt.
+Read Input Line by Line:
+
+Read each line from the input file and process based on specific conditions (i.e., MACRO, MEND, or other lines).
+Handling MACRO Directive:
+
+When the MACRO keyword is encountered:
+Extract the macro name and parameters.
+Initialize counters for positional parameters (pp), keyword parameters (kp), and their pointers (mdtp, kpdtp).
+For each parameter:
+If it’s a positional parameter, increment pp and add it to the Parameter Name Table (PNTAB).
+If it’s a keyword parameter, increment kp, parse its default value (if any), and add it to the Keyword Parameter Default Table (KPDT) and PNTAB.
+Write an entry to the Macro Name Table (MNT), which records:
+Macro name
+Number of positional parameters (pp)
+Number of keyword parameters (kp)
+Pointer to the Macro Definition Table (MDT)
+Pointer to the Keyword Parameter Default Table (KPDT) (if applicable).
+Handling MEND Directive:
+
+When the MEND keyword is encountered:
+Write the last line of the macro to the MDT.
+Reset flags and parameters for the next macro.
+Write the Parameter Name Table (PNTAB) for this macro to the output file pntab.txt.
+Clear the PNTAB for the next macro.
+Process the Macro Body:
+
+If the line is part of the macro body (between MACRO and MEND), check for occurrences of parameters:
+Replace each parameter with its reference in the Parameter Name Table (PNTAB).
+For positional parameters, replace them with the format (P, <position>).
+Write the processed line to the Macro Definition Table (MDT).
+Handle Non-Macro Code:
+
+If the line does not belong to a macro definition, treat it as regular assembly code and write it to the intermediate file.
+Close Files:
+
+After all lines are processed, close all open files.
+End of Processing:
+
+Print a message indicating that Macro Pass 1 processing is complete.
+
+
+
+
+
+
+
+
+
+
+
+
+Theory
+The theory behind the Macro Pass 1 Processor revolves around handling macro definitions and creating various tables that help in the subsequent expansion of macros during the second pass of the assembler.
+
+Macro Definitions:
+
+A macro is a sequence of instructions that can be reused multiple times, with the ability to take parameters.
+Positional Parameters are referenced by their position in the macro definition.
+Keyword Parameters are referenced by name and can have default values.
+Macro Expansion Process:
+
+Macro Pass 1 deals with identifying macro definitions and creating data structures to manage the parameters and the body of the macro.
+Macro Name Table (MNT): Stores information about each macro, including its name, number of positional parameters, number of keyword parameters, and pointers to the Macro Definition Table (MDT) and the Keyword Parameter Default Table (KPDT).
+Macro Definition Table (MDT): Stores the body of each macro with placeholders for the parameters.
+Keyword Parameter Default Table (KPDT): Stores the keyword parameters along with their default values.
+Parameter Name Table (PNTAB): Maps each parameter to its position or keyword definition.
+The output of Macro Pass 1 is a set of tables that will assist in expanding the macros correctly in the next pass of the assembler.

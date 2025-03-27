@@ -1,0 +1,26 @@
+Algorithm Explanation
+The Priority Scheduling Algorithm can be broken down into the following steps:
+
+Input Process Details: Each process is assigned a burst time and a priority.
+Sort Processes by Priority: The processes are sorted by priority (higher priority processes will have lower priority numbers). If two processes have the same priority, they can be sorted by other means, such as burst time or arrival time.
+Calculate Waiting Time and Turnaround Time:
+Waiting Time: The waiting time for a process is the time the process spends waiting in the ready queue before it gets executed. For the first process, the waiting time is zero. For all subsequent processes, the waiting time is the sum of the burst times of all previous processes.
+Turnaround Time: The turnaround time is the total time spent by a process from its arrival to its completion, including both waiting and execution times. This is calculated as the sum of the waiting time and burst time.
+Output: Display the burst time, priority, waiting time, and turnaround time for each process, as well as the average waiting time and turnaround time for the entire system.
+
+
+
+
+
+
+
+
+
+Priority Scheduling is a CPU scheduling algorithm where each process is assigned a priority. The process with the highest priority (usually the process with the lowest priority number) is executed first. If two processes have the same priority, they can be scheduled according to other criteria, like arrival time or burst time.
+
+This scheduling algorithm is often used in real-time operating systems where certain tasks need to be executed immediately or at a higher priority than others. It is a non-preemptive algorithm, meaning once a process starts executing, it runs to completion without interruption.
+
+Key Points:
+Higher Priority = Lower Priority Number: In this algorithm, the process with the smallest priority number is considered to have the highest priority.
+Non-preemptive: Once a process starts its execution, it runs until completion. Other processes must wait their turn until the CPU becomes available.
+Starvation: One of the major drawbacks of priority scheduling is the possibility of starvation. If there are always higher-priority processes in the system, lower-priority processes may never get executed.

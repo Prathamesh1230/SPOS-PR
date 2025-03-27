@@ -1,0 +1,99 @@
+
+Algorithm for Symbol Table Program
+The program processes an input assembly language program and generates four tables: Symbol Table, Opcode Table, Literal Table, and Pool Table. Below is the step-by-step algorithm:
+
+1. Initialization
+Create data structures for:
+
+Symbol Table (SymbolTab[][])
+Opcode Table (OpTab[][])
+Literal Table (LitTab[][])
+Pool Table (PoolTab[])
+Counters for each table (symTabLine, opTabLine, litTabLine, poolTabLine)
+Line counter (line_count) and location counter (LC).
+Open the input file and initialize the location counter (LC) to 0.
+
+2. Read the Input File Line-by-Line
+For each line in the input file:
+
+Parse the line:
+
+Split the line into tokens using tabs (\t) as a delimiter.
+Handle START directive:
+
+If the first line contains START, initialize LC with the specified address (or default to 0).
+Update Symbol Table:
+
+If the first token (label) is not empty, add it to the SymbolTab with the current LC value and a default length of 1.
+Handle Declarative Statements (DS or DC):
+
+Add labels associated with DS or DC to the SymbolTab.
+Update Literal Table:
+
+If the third token is a literal (starts with =), add it to the LitTab with the current LC value.
+Update Opcode Table:
+
+Add opcodes (START, END, DS, etc.) to the OpTab with their classification (e.g., assembler directive AD, declarative statement DL, or imperative statement IS).
+Increment LC:
+
+Increment the location counter (LC) after processing the line.
+3. Handle Literals (LTORG or END)
+When encountering LTORG or END:
+Allocate addresses to literals in the LitTab based on LC.
+Update the PoolTab with the index of the first literal in each literal pool.
+4. Generate Output Tables
+Print the Symbol Table:
+
+Include columns for the symbol, its address, and its length.
+Print the Opcode Table:
+
+Include columns for mnemonic, class, and additional information.
+Print the Literal Table:
+
+Include columns for the literal and its assigned address.
+Print the Pool Table:
+
+Include the index of each literal pool.
+5. Close the File
+Close the input file to release system resources.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Theory
+The program demonstrates the construction of assembler tables, essential components of a two-pass assembler.
+
+1. Assemblers and Tables
+Assemblers translate assembly language programs into machine code.
+During translation, the assembler uses:
+Symbol Table: Tracks user-defined symbols (e.g., labels, variables) and their corresponding addresses.
+Opcode Table: Stores opcodes, their classifications (e.g., imperative, declarative), and additional details.
+Literal Table: Maintains literals (e.g., ='5') and their memory allocations.
+Pool Table: Helps manage literal pools created by LTORG or END.
+2. Key Directives
+START: Defines the starting address of the program.
+LTORG: Indicates the assembler should assign addresses to all unallocated literals.
+END: Signals the end of the program and assigns addresses to any remaining literals.
+3. One-Pass vs. Two-Pass Assemblers
+This implementation processes the program in a single pass, where:
+
+The location counter (LC) is updated line-by-line.
+Symbols, opcodes, and literals are added to their respective tables as they are encountered.
+4. Importance
+This process is foundational for understanding how assemblers resolve symbols and manage memory allocation.
+The tables generated here serve as a bridge between the human-readable assembly code and the binary machine code.

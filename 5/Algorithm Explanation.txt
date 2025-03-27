@@ -1,0 +1,27 @@
+The Round Robin Scheduling Algorithm works as follows:
+
+Input:
+Number of processes and their burst times (the time each process needs to execute).
+The time quantum (the time each process will be allowed to run in one cycle).
+Simulation:
+Each process gets a turn to run for the length of the time quantum, if it has remaining burst time.
+If a process needs more time than the quantum to finish, it is preempted and placed back in the queue for the next cycle.
+This continues until all processes are completed.
+Calculations:
+Waiting Time: The time a process spends in the ready queue waiting for CPU time. It is calculated as turnaround time - burst time.
+Turnaround Time: The total time taken for a process to complete from its arrival to its completion. It is the sum of the waiting time and the burst time.
+Output:
+The program displays the burst time, waiting time, and turnaround time for each process, as well as the average waiting time and average turnaround time for all processes.
+
+
+
+
+
+
+Round Robin (RR) is one of the simplest and most widely used CPU scheduling algorithms. It is based on the concept of time-sharing, where each process is assigned a fixed time slice or "quantum." The scheduler cycles through the processes, allocating each process a fixed time interval to execute. If a process does not complete within its allocated quantum, it is preempted and placed back in the queue, and the next process is given a turn. The cycle repeats until all processes have completed.
+
+Key Points:
+Time Quantum: The fixed time interval (quantum) allocated to each process during its turn in the CPU.
+Preemptive: Round Robin is a preemptive scheduling algorithm, meaning a process can be interrupted and resumed later if it doesn't finish within its quantum.
+Fair: Every process gets a fair share of the CPU, as they are executed in a cyclic manner.
+Starvation: While starvation is less of an issue with Round Robin compared to other scheduling algorithms (like Priority Scheduling), processes that require more time than the given quantum might experience significant delays.

@@ -1,0 +1,40 @@
+The First-Come, First-Served (FCFS) Scheduling Algorithm works as follows:
+
+Input:
+
+The number of processes and their respective arrival times and burst times (the time each process needs to execute).
+Sorting:
+
+Processes are sorted by their arrival time. The first process to arrive is executed first, followed by the next process, and so on.
+Execution:
+
+Each process is executed in the order of its arrival time.
+Once a process starts executing, it runs to completion without preemption.
+Calculations:
+
+Completion Time: The time at which the process finishes execution. It is calculated as the sum of the burst time and the current time when the process starts executing.
+Turnaround Time: The total time a process takes to complete from its arrival to completion. It is calculated as the difference between the completion time and the arrival time.
+Waiting Time: The time a process spends waiting in the ready queue before it starts executing. It is calculated as the turnaround time minus the burst time.
+Output:
+
+The program displays the arrival time, burst time, completion time, turnaround time, and waiting time for each process.
+It also computes and displays the average waiting time and average turnaround time for all processes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+First-Come, First-Served (FCFS) is a simple and intuitive CPU scheduling algorithm that processes requests in the order they arrive. It is a non-preemptive scheduling method, meaning that once a process starts executing, it will not be interrupted until it completes. The CPU schedules processes based on their arrival time.
+
+Key Points:
+Non-Preemptive: Once a process starts executing, it runs to completion without interruption.
+Simple and Fair: FCFS is easy to understand and implement. Each process is given CPU time in the order it arrives.
+Problem of Convoy Effect: FCFS may cause the "convoy effect," where longer processes can delay shorter ones, resulting in a poor average waiting time.

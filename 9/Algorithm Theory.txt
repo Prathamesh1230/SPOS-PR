@@ -1,0 +1,93 @@
+Best Fit Algorithm:
+Purpose: To minimize memory wastage by placing a process in the smallest available block that is large enough to accommodate it.
+
+Algorithm:
+Input:
+
+Number of memory blocks nBlocks and their sizes blockSizes[].
+Number of processes nProcesses and their sizes processSizes[].
+Initialize:
+
+Create an allocation array allocation[] to store the block assigned to each process. Initialize all values in allocation[] to -1 (meaning not allocated).
+For each process:
+
+For each process i:
+Initialize bestIdx = -1 to store the index of the best block for the process.
+For each memory block j:
+If blockSizes[j] >= processSizes[i] and:
+If bestIdx == -1 or blockSizes[j] < blockSizes[bestIdx] (i.e., the current block is the smallest one that can fit the process):
+Set bestIdx = j.
+If bestIdx != -1 (i.e., a suitable block is found):
+Allocate process i to block bestIdx (allocation[i] = bestIdx).
+Reduce the size of blockSizes[bestIdx] by processSizes[i] (remaining memory in the block).
+Output:
+
+Print the allocation results, displaying the process number, process size, and the block allocated.
+
+
+
+
+
+
+
+
+
+
+
+Worst Fit Algorithm:
+Purpose: To maximize remaining space in the largest available block by placing the process in the biggest block that can accommodate it.
+
+Algorithm:
+Input:
+
+Number of memory blocks nBlocks and their sizes blockSizes[].
+Number of processes nProcesses and their sizes processSizes[].
+Initialize:
+
+Create an allocation array allocation[] to store the block assigned to each process. Initialize all values in allocation[] to -1 (meaning not allocated).
+For each process:
+
+For each process i:
+Initialize worstIdx = -1 to store the index of the worst block for the process.
+For each memory block j:
+If blockSizes[j] >= processSizes[i] and:
+If worstIdx == -1 or blockSizes[j] > blockSizes[worstIdx] (i.e., the current block is the largest one that can fit the process):
+Set worstIdx = j.
+If worstIdx != -1 (i.e., a suitable block is found):
+Allocate process i to block worstIdx (allocation[i] = worstIdx).
+Reduce the size of blockSizes[worstIdx] by processSizes[i] (remaining memory in the block).
+Output:
+
+Print the allocation results, displaying the process number, process size, and the block allocated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Best Fit Memory Allocation:
+Goal: Minimize wasted space by finding the smallest block that is big enough for the process.
+How it works:
+The algorithm traverses the list of available memory blocks and selects the smallest block that is capable of fitting the process.
+It aims to leave the smallest leftover space possible in the block.
+Worst Fit Memory Allocation:
+Goal: Maximize the remaining space in the largest block by allocating the process to the biggest available block.
+How it works:
+The algorithm selects the largest block that is big enough for the process.
+The idea is that by leaving the largest remaining space in the biggest block, there may be more chances for larger processes to fit later.
+Comparison of Best Fit and Worst Fit:
+Best Fit typically results in smaller leftover spaces but can lead to fragmentation over time as smaller chunks of memory are created.
+Worst Fit can create larger leftover spaces, which may help accommodate large processes, but can lead to inefficient use of memory due to larger unused portions in blocks.

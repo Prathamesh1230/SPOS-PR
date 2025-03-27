@@ -1,0 +1,63 @@
+1. Next Fit Allocation Algorithm
+The algorithm works as follows:
+
+Initialize Allocation Array: Create an allocation array where each process is initially marked as "Not Allocated" (represented by -1).
+Search for Fit: For each process, start searching for a memory block starting from the last allocated block. This search wraps around to the beginning once the end of the block list is reached.
+Allocate Memory: If a memory block is found that can accommodate the process, allocate it and update the block's size.
+Repeat for All Processes: Repeat the process until all processes are either allocated or no block is available for a process.
+
+
+1. Next Fit Allocation
+Next Fit is a memory allocation algorithm that assigns the memory blocks to processes in a circular fashion, starting from the last allocated block. The idea is to search for the next available block from the point of the last allocation rather than starting the search from the beginning of the block list each time.
+
+How it works:
+
+The process starts by attempting to allocate a process to a block, beginning from the last block that was allocated.
+If the block is large enough to accommodate the process, it is allocated, and the block size is reduced.
+If the block cannot accommodate the process, the search continues through the memory blocks in a circular manner (i.e., wrapping around to the first block once the last block is reached).
+The allocation stops when all processes are either allocated or no block can accommodate a process.
+Advantages:
+
+The algorithm is simple and faster than some other methods as it does not always start the search from the first block.
+It reduces fragmentation by reusing blocks that were previously allocated.
+Disadvantages:
+
+The memory search is not efficient in certain cases, especially if the larger blocks are scattered across memory.
+
+
+
+
+
+
+
+
+
+
+2. Worst Fit Allocation Algorithm
+The algorithm works as follows:
+
+Initialize Allocation Array: Similar to Next Fit, start by marking all processes as unallocated.
+Find the Largest Block: For each process, scan through all blocks and choose the one with the largest free space that is still large enough to fit the process.
+Allocate Memory: Once a block is found, allocate the process and reduce the block's size accordingly.
+Repeat for All Processes: Repeat this process for all processes.
+
+
+
+
+
+2. Worst Fit Allocation
+Worst Fit allocation is a strategy where the process is allocated to the largest available block that can accommodate it. This strategy tries to leave the largest possible remaining space in memory, hoping that it will be sufficient to accommodate future processes.
+
+How it works:
+
+The algorithm iterates through all the available memory blocks and selects the block with the largest remaining free space that is still large enough to fit the process.
+Once a block is found, the block is allocated to the process, and the block's size is reduced by the size of the allocated process.
+If no block is large enough to accommodate a process, the process is not allocated.
+Advantages:
+
+This method tries to minimize fragmentation by leaving the largest possible unused space.
+It can work well in scenarios with many processes of varying sizes.
+Disadvantages:
+
+It may lead to inefficient use of memory if large blocks are not used optimally.
+As the system gets more fragmented, the remaining large blocks might become insufficient for new processes.
